@@ -3,19 +3,22 @@ package com.example.androidbootcamp10yul.ui.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.androidbootcamp10yul.api.ApiUtils
+import com.example.androidbootcamp10yul.api.StoreApi
 import com.example.androidbootcamp10yul.model.ProductResponseItem
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val api: StoreApi
+) : ViewModel() {
 
     val data = MutableLiveData<List<ProductResponseItem>>()
 
     val loading = MutableLiveData<Boolean>()
 
     val error = MutableLiveData<String>()
-
-    private val api = ApiUtils.getApi()
 
     fun getProducts() {
         viewModelScope.launch {

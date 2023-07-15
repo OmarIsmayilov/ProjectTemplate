@@ -4,8 +4,9 @@ import androidx.fragment.app.viewModels
 import com.example.androidbootcamp10yul.adapter.ProductAdapter
 import com.example.androidbootcamp10yul.base.BaseFragment
 import com.example.androidbootcamp10yul.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeFragment :
     BaseFragment<HomeViewModel, FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
